@@ -292,6 +292,7 @@ async function finale() {
     await sleep(500);
   }
   $('finaleMsg').textContent = r.message || 'Pack your bags, we\'re going to Vegas! 🏁';
+  $('againBtn').classList.remove('hidden');
 }
 
 function fireworks() {
@@ -369,7 +370,14 @@ async function boot() {
   if (hunt.intro) $('introText').textContent = hunt.intro;
   if (found.size) $('startBtn').textContent = 'Continue the mission';
 
-  if (!remaining().length) { $('intro').classList.add('hidden'); return finale(); }
+  // A finished hunt never jumps straight to the reveal: offer a replay or a fresh start instead.
+  if (!remaining().length) {
+    $('introTitle').textContent = 'Mission complete! 🏁';
+    $('introText').textContent = 'All treasures were found on this phone.';
+    $('startBtn').classList.add('hidden');
+    $('loadText').textContent = '';
+    $('doneRow').classList.remove('hidden');
+  }
   if (checkSticker()) renderOrbs();
 
   const fill = $('loadFill');
@@ -393,6 +401,15 @@ async function boot() {
   }
   $('startBtn').disabled = false;
 }
+
+function restart() {
+  found = new Set();
+  saveProgress();
+  location.replace(location.pathname + location.search.replace(/[?&]reset=1/, ''));
+}
+$('restartBtn').onclick = restart;
+$('againBtn').onclick = restart;
+$('replayBtn').onclick = () => { sfx.unlock(); $('intro').classList.add('hidden'); finale(); };
 
 $('startBtn').onclick = async () => {
   sfx.unlock();

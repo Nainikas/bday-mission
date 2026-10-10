@@ -19,6 +19,10 @@
   <div class="loadbar"><div id="loadFill"></div></div>
   <div class="small" id="loadText">Charging the scanner…</div>
   <button class="btn" id="startBtn" disabled>Start the mission</button>
+  <div class="row hidden" id="doneRow">
+    <button class="btn" id="replayBtn">Replay the reveal</button>
+    <button class="btn ghost" id="restartBtn">Start the hunt over</button>
+  </div>
 </section>
 
 <section id="scan" class="screen hidden">
@@ -56,6 +60,7 @@
   <h2 class="neon" id="finaleTitle"></h2>
   <div class="tickets" id="tickets"></div>
   <p class="msg" id="finaleMsg"></p>
+  <button class="btn ghost hidden" id="againBtn" style="margin:12px 0 40px">↺ Play the hunt again</button>
 </section>
 
 <script src="vendor/confetti.browser.js"></script>
