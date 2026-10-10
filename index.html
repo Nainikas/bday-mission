@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0b1a">
+<title>Birthday Mission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section id="intro" class="screen">
+  <div class="cake">🎂</div>
+  <h1 id="introTitle">Happy Birthday!</h1>
+  <p id="introText">A secret mission is hidden around this house. Find the treasures, follow the clues, and something special awaits.</p>
+  <div class="loadbar"><div id="loadFill"></div></div>
+  <div class="small" id="loadText">Charging the scanner…</div>
+  <button class="btn" id="startBtn" disabled>Start the mission</button>
+</section>
+
+<section id="scan" class="screen hidden">
+  <video id="cam" playsinline muted autoplay></video>
+  <div class="reticle" id="reticle"></div>
+  <div class="top">
+    <div class="orbs" id="orbs"></div>
+    <div class="clue">
+      <div class="lbl" id="clueLbl">Treasure 1</div>
+      <div class="txt" id="clueTxt"></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="meter">
+      <div class="hint" id="hint">Point the camera around…</div>
+      <div class="therm"><div class="needle" id="needle"></div></div>
+    </div>
+    <div class="row">
+      <button class="btn ghost" id="hintBtn">💡 Hint</button>
+      <button class="btn ghost" id="soundBtn">🔊</button>
+    </div>
+  </div>
+</section>
+
+<section id="found" class="screen hidden">
+  <div class="who" id="foundWho">🦖</div>
+  <div class="big" id="foundBig">FOUND IT!</div>
+  <img class="thumb" id="foundImg" alt="">
+  <div class="small" id="foundText"></div>
+  <button class="btn" id="nextBtn">Next clue</button>
+</section>
+
+<section id="finale" class="screen hidden">
+  <div class="lights" id="lights"></div>
+  <h2 class="neon" id="finaleTitle"></h2>
+  <div class="tickets" id="tickets"></div>
+  <p class="msg" id="finaleMsg"></p>
+</section>
+
+<script src="vendor/confetti.browser.js"></script>
+<script type="module" src="js/hunt.js"></script>
+</body>
+</html>
